@@ -26,8 +26,11 @@ export default function FormNewGoal({ colors, onAddNewGoal, onToggleForm }) {
       }}
     >
       <h2 className="title">ADD A NEW GOAL</h2>
-      <label className="label-description">Description</label>
+      <label htmlFor="description" className="label-description">
+        Description
+      </label>
       <input
+        id="description"
         className="input-description"
         type="text"
         value={description}

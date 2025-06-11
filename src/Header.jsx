@@ -2,6 +2,7 @@ export default function Header({ filter, setFilter }) {
   return (
     <header className="main-header">
       <select
+        name="current-list"
         className="current-list"
         value={filter}
         onChange={e => setFilter(e.target.value)}

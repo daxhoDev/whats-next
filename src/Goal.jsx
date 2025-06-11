@@ -9,6 +9,7 @@ export default function Goal({ goal, onToggleCompleted, colors }) {
       }}
     >
       <input
+        id={goal.id}
         className="check-completed"
         type="checkbox"
         checked={goal.isCompleted}

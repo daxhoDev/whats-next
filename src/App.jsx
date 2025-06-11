@@ -49,7 +49,7 @@ export default function App() {
   }
 
   function handleAddNewGoal(newGoal) {
-    setGoals([...goals, newGoal]);
+    setGoals([newGoal, ...goals]);
   }
 
   function handleToggleForm() {
