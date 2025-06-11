@@ -1,0 +1,95 @@
+$checkbox-size: 1.4rem;
+$add-button-size: 3.5rem;
+
+$color-light: #b48fff;
+$color-medium: #6a20ff;
+$color-dark: #5c1ed7;
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Ubuntu, Arial, Helvetica, sans-serif;
+}
+
+.main-header {
+  padding: 1rem;
+  padding-top: 2rem;
+
+  .current-list {
+    font-size: 1.3rem;
+    border: none;
+    background-color: transparent;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  button {
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-right: 1.5rem;
+    transform: translateY(3px);
+  }
+}
+
+.goals-list {
+  list-style: none;
+  padding: 0;
+}
+
+.goal {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  //   border-bottom: 1px solid $color-light;
+
+  input {
+    appearance: none;
+    height: $checkbox-size;
+    width: $checkbox-size;
+    border: 2px solid $color-light;
+    margin-right: 1rem;
+    border-radius: 4px;
+  }
+
+  &.completed {
+    text-decoration: line-through;
+    color: gray;
+
+    input {
+      border-color: $color-medium;
+      background-color: $color-medium;
+    }
+  }
+}
+
+.button {
+  width: $add-button-size;
+  height: $add-button-size;
+  border: none;
+  border-radius: 16px;
+  background-color: $color-medium;
+  color: white;
+  font-weight: bold;
+  font-size: $add-button-size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  bottom: 5vh;
+  right: 10vw;
+  transition: 200ms;
+
+  &:hover,
+  &:active {
+    transform: translateY(2px);
+    background-color: $color-dark;
+  }
+}
