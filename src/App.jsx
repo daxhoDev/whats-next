@@ -4,27 +4,6 @@ import GoalsList from "./GoalsList";
 import Backdrop from "./Backdrop";
 import FormNewGoal from "./FormNewGoal";
 
-const initialGoals = [
-  {
-    id: 569823,
-    isCompleted: false,
-    description: "Buy a new phone",
-    color: "blue",
-  },
-  {
-    id: 52214789,
-    isCompleted: false,
-    description: "Master React development",
-    color: "green",
-  },
-  {
-    id: 7895236,
-    isCompleted: true,
-    description: "Master JavaScript development",
-    color: "yellow",
-  },
-];
-
 const colors = [
   { name: "red", hex: "#e72d2d" },
   { name: "orange", hex: "#ff851a" },
@@ -36,7 +15,7 @@ const colors = [
 ];
 
 export default function App() {
-  const [goals, setGoals] = useState(initialGoals);
+  const [goals, setGoals] = useState([]);
   const [filter, setFilter] = useState("all");
   const [isFormNewGoalOpen, setIsFormNewGoalOpen] = useState(false);
 
@@ -65,8 +44,11 @@ export default function App() {
         filter={filter}
         colors={colors}
       />
-      <button className="button button-add-goal" onClick={handleToggleForm}>
-        +
+      <button
+        className="button button-add-goal"
+        onClick={() => handleToggleForm()}
+      >
+        {isFormNewGoalOpen ? "-" : "+"}
       </button>
       {isFormNewGoalOpen && (
         <Backdrop onClick={handleToggleForm}>

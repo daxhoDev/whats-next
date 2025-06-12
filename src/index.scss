@@ -20,7 +20,6 @@ body {
   height: 100vh;
   display: grid;
   grid-template-rows: 4.3rem auto;
-  max-width: 600px;
   margin: 0 auto;
 }
 
@@ -137,6 +136,7 @@ body {
 }
 
 .form-new-goal {
+  width: 98vw;
   background-color: white;
   padding: 1.8rem;
   border-radius: 0.5em;
@@ -164,6 +164,7 @@ body {
 
   .colors {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.3rem;
     margin-bottom: 1rem;
   }
