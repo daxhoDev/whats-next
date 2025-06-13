@@ -57,17 +57,21 @@ export default function App() {
 
   return (
     <div className="app">
-      <Header filter={filter} setFilter={setFilter} />
-      <GoalsList
-        goals={goals}
-        onToggleCompleted={handleToggleCompleted}
-        sortedGoals={sortedGoals}
-        colors={colors}
-      />
-      <Sort sortBy={sortBy} setSortBy={setSortBy} />
-      <button className="button button-add-goal" onClick={handleToggleForm}>
-        {isFormNewGoalOpen ? "-" : "+"}
-      </button>
+      <div className="list-container">
+        <Header filter={filter} setFilter={setFilter} />
+        <GoalsList
+          goals={goals}
+          onToggleCompleted={handleToggleCompleted}
+          sortedGoals={sortedGoals}
+          colors={colors}
+        />
+        <div className="sort-add-container">
+          <Sort sortBy={sortBy} setSortBy={setSortBy} />
+          <button className="button button-add-goal" onClick={handleToggleForm}>
+            {isFormNewGoalOpen ? "-" : "+"}
+          </button>
+        </div>
+      </div>
       {isFormNewGoalOpen && (
         <Backdrop onClick={handleToggleForm}>
           <FormNewGoal
