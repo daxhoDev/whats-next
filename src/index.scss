@@ -2,6 +2,7 @@ $checkbox-size: 1.4rem;
 $add-button-size: 3.5rem;
 $color-selector-size: 2.6rem;
 
+$color-background: #faf7ff;
 $color-lightest: #f7f2ff;
 $color-light: #b48fff;
 $color-medium: #6a20ff;
@@ -13,13 +14,14 @@ $color-dark: #4516a2;
 }
 
 body {
+  background-color: $color-background;
   font-family: Ubuntu, Arial, Helvetica, sans-serif;
 }
 
 .app {
   height: 100vh;
   display: grid;
-  grid-template-rows: 4.3rem auto;
+  grid-template-rows: 4.3rem auto 3rem;
   margin: 0 auto;
 }
 
@@ -88,6 +90,11 @@ body {
   font-size: 0.95rem;
   transition: all 200ms;
 
+  &:hover,
+  &:active {
+    background-color: $color-lightest;
+  }
+
   &.completed {
     text-decoration: line-through;
     color: rgb(176, 176, 176);
@@ -105,6 +112,24 @@ body {
     &:checked {
       border-color: $color-medium;
       background-color: $color-medium;
+    }
+  }
+}
+
+.sort {
+  font-size: 1.1rem;
+  padding-left: 2rem;
+
+  select {
+    font: inherit;
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+    margin-left: 1px;
+    color: $color-dark;
+
+    &:focus {
+      outline: none;
     }
   }
 }
