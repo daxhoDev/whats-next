@@ -7,11 +7,11 @@ export default function FormNewGoal({ colors, onAddNewGoal, onToggleForm }) {
   return (
     <form
       className="form-new-goal"
-      style={{
-        borderTop: `0.5em solid ${
-          colors.find(el => el.name === selectedColor).hex
-        }`,
-      }}
+      // style={{
+      //   borderTop: `0.5em solid ${
+      //     colors.find(el => el.name === selectedColor).hex
+      //   }`,
+      // }}
       onSubmit={e => {
         e.preventDefault();
         if (!description) return;
