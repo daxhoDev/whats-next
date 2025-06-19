@@ -36,19 +36,22 @@ body {
     margin: 5vw;
     display: grid;
     grid-template-columns: minmax(60%, 600px) 1fr;
-    gap: 2rem;
-    align-items: center;
+    gap: 1rem;
+    align-items: end;
   }
+}
+
+select {
+  cursor: pointer;
 }
 
 .list-container {
   height: 100vh;
   display: grid;
-  grid-template-rows: 4.3rem 1fr auto;
+  grid-template-rows: auto 1fr auto;
   margin: 0 auto;
 
   @media (min-width: 600px) {
-    // box-shadow: 0 0 60px #00000005;
     background-color: white;
     border-radius: 12px;
     width: 100%;
@@ -77,8 +80,17 @@ body {
 }
 
 .main-header {
-  padding: 1rem;
-  padding-top: 2rem;
+  padding: 2rem;
+
+  .filter {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .filter-icon {
+    width: 1.7rem;
+  }
 
   .current-list {
     font: inherit;
@@ -92,14 +104,14 @@ body {
     }
   }
 
-  button {
-    border: none;
-    background-color: transparent;
-    font-weight: bold;
-    font-size: 1.1rem;
-    margin-right: 1.5rem;
-    transform: translateY(3px);
-  }
+  // button {
+  //   border: none;
+  //   background-color: transparent;
+  //   font-weight: bold;
+  //   font-size: 1.1rem;
+  //   margin-right: 1.5rem;
+  //   transform: translateY(3px);
+  // }
 }
 
 .goals-list {
@@ -108,10 +120,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+  overflow-y: scroll;
 
   @media (min-width: 600px) {
-    min-height: 20rem;
-    margin-bottom: 4rem;
+    height: 50vh;
   }
 
   .text-empty-form {
@@ -119,7 +131,6 @@ body {
   }
 
   &.empty {
-    height: 100%;
     align-items: center;
     justify-content: center;
   }
@@ -129,6 +140,7 @@ body {
   display: flex;
   align-items: center;
   padding: 1rem;
+  padding-left: 1.5rem;
   font-size: 0.95rem;
   transition: all 200ms;
 
@@ -160,22 +172,26 @@ body {
 }
 
 .sort-add-container {
-  margin: 0 2rem;
+  padding: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
 }
 
 .sort {
   font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+
+  .sort-icon {
+    width: 2rem;
+  }
 
   select {
     font: inherit;
     font-weight: bold;
     border: none;
     background-color: transparent;
-    margin-left: 1px;
     color: $color-dark;
 
     &:focus {
@@ -185,6 +201,9 @@ body {
 }
 
 .button-add-goal {
+  position: fixed;
+  bottom: 12vh;
+  right: 15vw;
   width: $add-button-size;
   height: $add-button-size;
   border-radius: 16px;
@@ -193,6 +212,10 @@ body {
   align-items: center;
   justify-content: center;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+
+  @media (min-width: 600px) {
+    position: static;
+  }
 }
 
 .backdrop {

@@ -3,11 +3,10 @@ export default function Goal({ goal, onToggleCompleted, colors }) {
     <li
       className={`goal ${goal.isCompleted ? "completed" : ""}`}
       style={{
-        borderLeft: `0.5em solid ${
+        borderLeft: `0.5rem solid ${
           colors.find(el => el.name === goal.color).hex
         }`,
       }}
-      onClick={() => onToggleCompleted(goal)}
     >
       <input
         id={goal.id}
@@ -15,6 +14,7 @@ export default function Goal({ goal, onToggleCompleted, colors }) {
         type="checkbox"
         readOnly
         checked={goal.isCompleted}
+        onClick={() => onToggleCompleted(goal)}
       ></input>
       {goal.description}
     </li>
