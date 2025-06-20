@@ -1,6 +1,13 @@
 import Goal from "./Goal";
 
-export default function GoalsList({ onToggleCompleted, sortedGoals, colors }) {
+export default function GoalsList({
+  openGoal,
+  onOpenGoal,
+  onToggleCompleted,
+  onToggleConfirmation,
+  sortedGoals,
+  colors,
+}) {
   return (
     <ul className={`goals-list ${sortedGoals.length === 0 ? "empty" : ""}`}>
       {sortedGoals.length > 0 ? (
@@ -9,6 +16,9 @@ export default function GoalsList({ onToggleCompleted, sortedGoals, colors }) {
             key={el.id}
             goal={el}
             onToggleCompleted={onToggleCompleted}
+            onToggleConfirmation={onToggleConfirmation}
+            onOpenGoal={onOpenGoal}
+            openGoal={openGoal}
             colors={colors}
           />
         ))

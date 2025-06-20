@@ -6,7 +6,7 @@ export default function FormNewGoal({ colors, onAddNewGoal, onToggleForm }) {
 
   return (
     <form
-      className="form-new-goal"
+      className="modal form-new-goal"
       onSubmit={e => {
         e.preventDefault();
         if (!description) return;

@@ -4,6 +4,7 @@ import GoalsList from "./GoalsList";
 import Backdrop from "./Backdrop";
 import FormNewGoal from "./FormNewGoal";
 import Sort from "./Sort";
+import Confirmation from "./Confirmation";
 
 const colors = [
   { name: "red", hex: "#e72d2d" },
@@ -17,6 +18,7 @@ const colors = [
 
 export default function App() {
   const [goals, setGoals] = useState([]);
+  const [openGoal, setOpenGoal] = useState(null);
 
   const [filter, setFilter] = useState("all");
   const [sortBy, setSortBy] = useState("last");
@@ -38,6 +40,11 @@ export default function App() {
       : filteredGoals.slice().sort((a, b) => a.color.localeCompare(b.color));
 
   const [isFormNewGoalOpen, setIsFormNewGoalOpen] = useState(false);
+  const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
+
+  function handleOpenGoal(goal) {
+    setOpenGoal(goal.id !== openGoal?.id ? goal : null);
+  }
 
   function handleToggleCompleted(goal) {
     setGoals(
@@ -51,8 +58,17 @@ export default function App() {
     setGoals([newGoal, ...goals]);
   }
 
+  function handleRemoveGoal(goal) {
+    setIsConfirmationOpen(false);
+    setGoals(goals => goals.filter(el => el.id !== goal?.id));
+  }
+
   function handleToggleForm() {
     setIsFormNewGoalOpen(!isFormNewGoalOpen);
+  }
+
+  function handleToggleConfirmation() {
+    setIsConfirmationOpen(!isConfirmationOpen);
   }
 
   return (
@@ -60,10 +76,12 @@ export default function App() {
       <div className="list-container">
         <Header filter={filter} setFilter={setFilter} />
         <GoalsList
-          goals={goals}
           onToggleCompleted={handleToggleCompleted}
           sortedGoals={sortedGoals}
           colors={colors}
+          onToggleConfirmation={handleToggleConfirmation}
+          openGoal={openGoal}
+          onOpenGoal={handleOpenGoal}
         />
         <div className="sort-add-container">
           <Sort sortBy={sortBy} setSortBy={setSortBy} />
@@ -78,6 +96,15 @@ export default function App() {
             colors={colors}
             onAddNewGoal={handleAddNewGoal}
             onToggleForm={handleToggleForm}
+          />
+        </Backdrop>
+      )}
+      {isConfirmationOpen && (
+        <Backdrop onClick={handleToggleConfirmation}>
+          <Confirmation
+            onToggleConfirmation={handleToggleConfirmation}
+            onRemoveGoal={handleRemoveGoal}
+            openGoal={openGoal}
           />
         </Backdrop>
       )}

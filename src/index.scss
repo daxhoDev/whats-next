@@ -37,7 +37,7 @@ body {
     display: grid;
     grid-template-columns: minmax(60%, 600px) 1fr;
     gap: 1rem;
-    align-items: end;
+    align-items: center;
   }
 }
 
@@ -137,12 +137,13 @@ select {
 }
 
 .goal {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-rows: auto auto;
   padding: 1rem;
   padding-left: 1.5rem;
   font-size: 0.95rem;
   transition: all 200ms;
+  cursor: pointer;
 
   &:hover,
   &:active {
@@ -150,8 +151,15 @@ select {
   }
 
   &.completed {
-    text-decoration: line-through;
-    color: rgb(176, 176, 176);
+    .description {
+      text-decoration: line-through;
+      color: rgb(176, 176, 176);
+    }
+  }
+
+  .goal-info {
+    display: flex;
+    align-items: center;
   }
 
   .check-completed {
@@ -168,6 +176,17 @@ select {
       border-color: $color-medium;
       background-color: $color-medium;
     }
+  }
+
+  .goal-buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .button-remove {
+    background-color: transparent;
+    font-size: 0.9rem;
+    color: rgb(235, 50, 50);
   }
 }
 
@@ -239,15 +258,49 @@ select {
   }
 }
 
-.form-new-goal {
-  width: 98%;
+// .goal-menu {
+//   background-color: white;
+//   width: 95%;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   padding: 1.8rem;
+//   gap: 1rem;
+//   border-radius: 12px;
+//   box-shadow: 0 -8px 16px #aaa8, 0 8px 16px #3338;
+
+//   .options {
+//     width: 100%;
+//   }
+
+//   .button {
+//     width: 100%;
+//     padding: 0.5rem;
+//     border-radius: 0.5em;
+//     background-color: rgb(220, 26, 26);
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//   }
+
+//   &__description {
+//     font-weight: bold;
+//     text-transform: uppercase;
+//   }
+// }
+
+.modal {
+  width: 95%;
   background-color: white;
   padding: 1.8rem;
   border-radius: 12px;
+  box-shadow: 0 -8px 16px #aaa8, 0 8px 16px #3338;
+}
+
+.form-new-goal {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  box-shadow: 0 -8px 16px #aaa8, 0 8px 16px #3338;
 
   @media (min-width: 600px) {
     width: 100%;
@@ -301,5 +354,39 @@ select {
     font-size: inherit;
     padding: 0.5rem 1rem;
     border-radius: 0.5em;
+  }
+}
+
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .confirmation__message {
+    font-size: 1.6rem;
+    align-self: center;
+  }
+
+  .confirmation__buttons {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .buttons__option {
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+  }
+
+  .buttons__option--yes {
+    background-color: rgb(235, 50, 50);
+    color: white;
+  }
+
+  .buttons__option--no {
+    background-color: $color-light;
+    color: rgb(35, 35, 35);
   }
 }
