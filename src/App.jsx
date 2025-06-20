@@ -56,6 +56,7 @@ export default function App() {
 
   function handleAddNewGoal(newGoal) {
     setGoals([newGoal, ...goals]);
+    localStorage.setItem("goals", JSON.stringify(goals));
   }
 
   function handleRemoveGoal(goal) {
