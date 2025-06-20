@@ -91,7 +91,10 @@ export default function App() {
         </div>
       </div>
       {isFormNewGoalOpen && (
-        <Backdrop onClick={handleToggleForm}>
+        <Backdrop
+          className="backdrop--form-new-goal"
+          onClick={handleToggleForm}
+        >
           <FormNewGoal
             colors={colors}
             onAddNewGoal={handleAddNewGoal}
@@ -100,7 +103,10 @@ export default function App() {
         </Backdrop>
       )}
       {isConfirmationOpen && (
-        <Backdrop onClick={handleToggleConfirmation}>
+        <Backdrop
+          className="backdrop--confirmation"
+          onClick={handleToggleConfirmation}
+        >
           <Confirmation
             onToggleConfirmation={handleToggleConfirmation}
             onRemoveGoal={handleRemoveGoal}
