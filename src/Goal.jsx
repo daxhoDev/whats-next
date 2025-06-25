@@ -15,7 +15,11 @@ export default function Goal({
         }`,
       }}
       onClick={e => {
-        if (e.target.classList.contains("button")) return;
+        if (
+          e.target.classList.contains("button") ||
+          e.target.classList.contains("check-completed")
+        )
+          return;
         onOpenGoal(goal);
       }}
     >
